@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enrollment Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Enrollment Form</h2>
+        <form id="enrollmentForm">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" required>
+
+            <label for="studentEmail">Student Email:</label>
+            <input type="email" id="studentEmail" name="studentEmail" required>
+
+            <label for="dob">Student Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required>
+
+            <label for="gender">Gender:</label>
+            <div class="radio">
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+            </div>
+            <div class="radio">
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+        </div>
+            <div class="radio">
+            <input type="radio" id="other" name="gender" value="Other">
+            <label for="other">Other</label>
+        </div>
+            <label for="gradeLevel">Grade Level:</label>
+            <input type="text" id="gradeLevel" name="gradeLevel" required>
+
+            <label for="schoolYear">School Year & Semester:</label>
+            <input type="text" id="schoolYear" name="schoolYear" required>
+
+            <label for="streetAddress">Street Address:</label>
+            <input type="text" id="streetAddress" name="streetAddress" required>
+
+            <label for="apartment">Apartment, Suite, or Unit #:</label>
+            <input type="text" id="apartment" name="apartment">
+
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required>
+
+            <label for="state">State:</label>
+            <select id="state" name="state" required>
+                <option value="">Select a State</option>
+                <option value="NY">New York</option>
+                <option value="CA">California</option>
+                <option value="TX">Texas</option>
+                <!-- Add more states as necessary -->
+            </select>
+
+            <label for="zipcode">Zip Code:</label>
+            <input type="text" id="zipcode" name="zipcode" required pattern="\d{5}" title="Please enter a valid 5-digit zip code">
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required pattern="\d{10}" title="Please enter a valid 10-digit phone number">
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="agreeTerms">
+                <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                I agree to the terms and conditions
+            </label>
+
+            <button type="submit">Submit</button>
+            <p class="error" id="error"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('enrollmentForm').addEventListener('submit', function(event) {
+            const form = event.target;
+            const error = document.getElementById('error');
+            error.textContent = '';
+
+            if (!form.agreeTerms.checked) {
+                event.preventDefault();
+                error.textContent = 'You must agree to the terms and conditions.';
+                return;
+            }
+
+            // Optional: Add more validation checks here (e.g., regex for phone number, custom DOB checks)
+        });
+    </script>
+</body>
+</html>
